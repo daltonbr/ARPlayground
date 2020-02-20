@@ -7,6 +7,7 @@
 # Folders symlinked to the 'original' Library folder
 /iosLibrary/
 /androidLibrary/
+Library
 
 # Sensitive Assets
 /Assets/config/AutoBuilderSettings.asset.meta
