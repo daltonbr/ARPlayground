@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/02-ARAnnotationsPlacement.unity
     guid: 82c46b1656e1b3b46863017affe3f34f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/03-ARCanvasInteraction.unity
     guid: 5cbcd1c65a3f1554dbc63a238d5abaef
+  - enabled: 1
+    path: Assets/Scenes/04-ARGestureInteractableLog.unity
+    guid: a89f2b66fe2c7a1458505675472cc4ed
   m_configObjects: {}

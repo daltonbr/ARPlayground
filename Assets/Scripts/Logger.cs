@@ -1,38 +1,49 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.PlayerLoop;
+using DaltonLima.Core;
 
-//TODO: implement Singleton
-public class Logger : MonoBehaviour
+public class Logger : Singleton<Logger>
 {
-   [SerializeField] private TextMeshPro debugAreaText;
-   [SerializeField] private bool enableDebug;
-   [SerializeField] private int maxLines;
+    [SerializeField] private TextMeshProUGUI debugAreaText;
+    [SerializeField] private bool enableDebug;
+    [SerializeField] private int maxLines;
 
-   private void OnEnable()
-   {
-      debugAreaText.enabled = enableDebug;
-      enabled = enableDebug;
-   }
+    private void OnEnable()
+    {
+        debugAreaText.enabled = enableDebug;
+        enabled = enableDebug;
+    }
 
-   private void OnDisable()
-   {
-      throw new NotImplementedException();
-   }
+    private void OnDisable()
+    {
+        throw new NotImplementedException();
+    }
 
-   public void LogInfo(string message)
-   {
-      //ClearLines();
-      //debugAreaText.text += $"(DateTime.Now.ToString("HH-mm-ss"))color=\"white\">(message)</color>\n";
-   }
+    public void LogInfo(string message)
+    {
+        ClearLines();
+        debugAreaText.text += $"{DateTime.Now:yyyy-dd-M-HH-mm-ss}<color=\"white\">(message)</color>\n";
+    }
 
-   public void LogError()
-   {
-      
-   }
+    public void LogWarning()
+    {
+        ClearLines();
+        debugAreaText.text += $"{DateTime.Now:yyyy-dd-M-HH-mm-ss}<color=\"yellow\">(message)</color>\n";
+    }
+    
+    public void LogError()
+    {
+        ClearLines();
+        debugAreaText.text += $"{DateTime.Now:yyyy-dd-M-HH-mm-ss}<color=\"red\">(message)</color>\n";
+    }
 
+    private void ClearLines()
+    {
+        if (debugAreaText.text.Split('\n').Count() >= maxLines)
+        {
+            debugAreaText.text = string.Empty;
+        }
+    }
 }
